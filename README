@@ -1,0 +1,40 @@
+EditableContent
+===============
+
+This Rails plugin allows for in place editing of HTML content that is then stored in the database. It places an 'edit' link next to a block of HTML content that when clicked opens a text area to edit the text, preview it, and save it to the database. It can be used for simple content management.
+
+Requirements
+============
+
+The plugin uses Rails 2.3 engines functionality. If you wish to use it in versions lower than 2.3 you will need to copy the files from the app/ direction in the plugin to your application.
+
+The plugin uses JQuery for the javascript that it generates.
+
+The plugin uses the following line of code to allow access to the edit functionality. It expects these methods and objects to be available:
+logged_in? and current_user.admin?
+
+Installing
+==========
+
+ruby script/plugin install editable_content
+
+After installing generate the migration for the editable_contents table:
+ruby script/generate editable_content_migration
+rake db:migrate
+
+Example
+=======
+
+In your view:
+<% editable_content('unique_name_of_section') do %>
+ This is some content the user should be able to edit.
+<% end %>
+
+The code looks for a row in the editable_contents table with the name 'unique_name_of_section' and if found replaces the text in the block with that content of that row. Otherwise it creates a new row with the text in the block.
+
+Notes
+=====
+
+The plugin uses JQuery for the javascript it embeds in the page.
+
+Copyright (c) 2009 [Conor Hunt - conor.hunt@gmail.com], released under the MIT license
