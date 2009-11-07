@@ -16,7 +16,7 @@ logged_in? and current_user.admin?
 Installing
 ==========
 
-ruby script/plugin install git://github.com/pjhyett/auto_migrations.git
+ruby script/plugin install git://github.com/conorh/editable_content.git
 
 After installing generate the migration for the editable_contents table:
 ruby script/generate editable_content_migration
